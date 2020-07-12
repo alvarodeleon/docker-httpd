@@ -13,6 +13,8 @@ yum install yum-utils -y
  
 #Instalamos Nginx, MariaDB y SSH
 yum install -y httpd nginx mariadb-server openssh-server mod_fcgid
+
+yum install -y postgresql-server postgresql postgresql-contrib
  
 #Con esto instalaremos PHP 5.4, 5.5, 5.6, 7.0, 7.1, 7.2 y 7.3 
 #ademas de todas las librerías necesarias mas PHP-FPM para

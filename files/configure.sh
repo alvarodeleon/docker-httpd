@@ -19,6 +19,10 @@
 
 /bin/systemctl restart postgresql
 
+if [ ! -d "/etc/httpd/sites.d/" ]; then
+	mkdir -p /etc/httpd/sites.d/
+fi
+
 /bin/cp /etc/nginx/conf.d.example/phpmyadmin.conf /etc/nginx/conf.d/phpmyadmin.conf
 /bin/cp /etc/nginx/conf.d.example/phppgadmin.conf /etc/nginx/conf.d/phppgadmin.conf
 
@@ -38,7 +42,7 @@ sh /usr/sbin/fixsessions
 source /root/.bashrc
 
 #/bin/systemctl enable nginx
-/bin/systemctl httpd nginx
+/bin/systemctl enable httpd
 /bin/systemctl enable mariadb
 /bin/systemctl enable postgresql
 /bin/systemctl enable mongod

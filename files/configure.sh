@@ -37,7 +37,8 @@ sh /usr/sbin/fixsessions
 /bin/echo "export EDITOR=nano" >> /root/.bashrc
 source /root/.bashrc
 
-/bin/systemctl enable nginx
+#/bin/systemctl enable nginx
+/bin/systemctl httpd nginx
 /bin/systemctl enable mariadb
 /bin/systemctl enable postgresql
 /bin/systemctl enable mongod
@@ -51,7 +52,8 @@ source /root/.bashrc
 /bin/systemctl enable php73-php-fpm
 /bin/systemctl enable php74-php-fpm
 
-/bin/systemctl start nginx
+#/bin/systemctl start nginx
+/bin/systemctl start httpd
 /bin/systemctl start mariadb
 /bin/systemctl start postgresql
 /bin/systemctl start mongod

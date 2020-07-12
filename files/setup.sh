@@ -50,13 +50,17 @@ echo "extension=ssh2.so" >> /etc/opt/remi/php74/php.ini
 
 adduser www-data
 
+#Cambiando usuario de Apache
 sed -i 's/User apache/User www-data/g' /etc/httpd/conf/httpd.conf 
 sed -i 's/Group apache/Group www-data/g' /etc/httpd/conf/httpd.conf 
 
+#Habilitando AllowOverride
 sed -i 's/    AllowOverride None/    AllowOverride All/g' /etc/httpd/conf/httpd.conf 
 
+#Cambiando usuario de Nginx
 sed -i 's/user nginx;/user nginx;/g' /etc/nginx/nginx.conf 
 
+#Carpeta de configuracion de sitios Apache
 echo "IncludeOptional sites.d/*.conf" >> /etc/httpd/conf/httpd.conf
  
 
@@ -71,7 +75,7 @@ sed -i 's/:9000/:9072/' /etc/opt/remi/php72/php-fpm.d/www.conf
 sed -i 's/:9000/:9073/' /etc/opt/remi/php73/php-fpm.d/www.conf
 sed -i 's/:9000/:9074/' /etc/opt/remi/php74/php-fpm.d/www.conf
  
-
+#Cambiando usuario de PHP-FPM
 sed -i 's/user = apache/user = www-data/' /opt/remi/php54/root/etc/php-fpm.d/www.conf
 sed -i 's/group = apache/group = www-data/' /opt/remi/php54/root/etc/php-fpm.d/www.conf
 sed -i 's/user = apache/user = www-data/' /opt/remi/php55/root/etc/php-fpm.d/www.conf
@@ -116,25 +120,6 @@ chown www-data:www-data /var/opt/remi/php71/lib/php/session
 chown www-data:www-data /var/opt/remi/php72/lib/php/session
 chown www-data:nginx /var/opt/remi/php73/lib/php/session
 
-
-
-
-cat > /etc/httpd/conf.d.example/example.conf  << EOF
-<VirtualHost *:80>
-    DocumentRoot "/var/www/html/test.lan/"
-    ServerName test.lan
-    ServerAlias www.test.lan
-
-    DirectoryIndex index.php index.phtml index.html index.htm
-
-    <FilesMatch \.php$>
-        SetHandler "proxy:fcgi://127.0.0.1:9056"
-    </FilesMatch>
-</VirtualHost>
-
-EOF
-
-
 sed -i 's/PrivateTmp=true/PrivateTmp=false/g' /usr/lib/systemd/system/php54-php-fpm.service
 sed -i 's/PrivateTmp=true/PrivateTmp=false/g' /usr/lib/systemd/system/php55-php-fpm.service
 sed -i 's/PrivateTmp=true/PrivateTmp=false/g' /usr/lib/systemd/system/php56-php-fpm.service
@@ -142,27 +127,6 @@ sed -i 's/PrivateTmp=true/PrivateTmp=false/g' /usr/lib/systemd/system/php70-php-
 sed -i 's/PrivateTmp=true/PrivateTmp=false/g' /usr/lib/systemd/system/php71-php-fpm.service
 sed -i 's/PrivateTmp=true/PrivateTmp=false/g' /usr/lib/systemd/system/php72-php-fpm.service
 sed -i 's/PrivateTmp=true/PrivateTmp=false/g' /usr/lib/systemd/system/php73-php-fpm.service
-
-#systemctl restart mariadb
-systemctl restart php54-php-fpm
-systemctl restart php55-php-fpm
-systemctl restart php56-php-fpm
-systemctl restart php70-php-fpm
-systemctl restart php71-php-fpm
-systemctl restart php72-php-fpm
-systemctl restart php73-php-fpm
-systemctl restart php74-php-fpm
-
-#systemctl restart nginx 
-
-cat > /usr/bin/setphp << EOF
-#!/bin/bash
-
-ln -sf /usr/bin/php\$1 /usr/bin/php
-
-EOF
-
-chmod +x /usr/bin/setphp
 
 echo -en "\033[1;31m" >> /etc/issue
 echo "Default" >> /etc/issue

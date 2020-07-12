@@ -1,0 +1,10 @@
+#!/bin/bash
+
+chmod 777 -R /opt/remi/php54/root/var/lib/php/session
+chmod 777 -R /opt/remi/php55/root/var/lib/php/session
+chmod 777 -R /var/opt/remi/php56/lib/php/session
+chmod 777 -R /var/opt/remi/php70/lib/php/session
+chmod 777 -R /var/opt/remi/php71/lib/php/session
+chmod 777 -R /var/opt/remi/php72/lib/php/session
+chmod 777 -R /var/opt/remi/php73/lib/php/session
+chmod 777 -R /var/opt/remi/php74/lib/php/session

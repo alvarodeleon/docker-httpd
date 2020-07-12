@@ -1,0 +1,9 @@
+#!/bin/bash
+
+mysql_install_db
+find /var/lib/mysql/ -type d | xargs chmod -v 700
+find /var/lib/mysql/ -type f | xargs chmod -v 660
+chmod 777 /var/lib/mysql/
+chown mysql:mysql -R /var/lib/mysql/
+service mariadb restart
+mysql  -u root -Bse "GRANT ALL PRIVILEGES ON *.* TO 'dbroot'@'localhost' IDENTIFIED BY 'dbroot';GRANT ALL PRIVILEGES ON *.* TO 'dbroot'@'127.0.0.1' IDENTIFIED BY 'dbroot';GRANT ALL PRIVILEGES ON *.* TO 'dbroot'@'%' IDENTIFIED BY 'dbroot';";

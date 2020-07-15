@@ -152,9 +152,8 @@ echo "Password: dbroot" >> /etc/issue
 echo "" >> /etc/issue
 
 echo "If MySQL fail on boot and /var/lib/mysql is empty, please execute mysql_repair" >> /etc/issue
-
-echo "For more instruction: https://www.alvarodeleon.net/centos7-nginx-multiphp" >> /etc/issue
-
+echo "" >> /etc/issue
+echo "For more instruction: https://www.alvarodeleon.net/entorno-de-desarrollo-apache-nginx-en-docker/" >> /etc/issue
 echo "" >> /etc/issue
 
 echo -en "\033[0m" >> /etc/issue

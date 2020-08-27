@@ -17,7 +17,7 @@ yum install -y wget nano lynx git iputils net-tools nmap mtr gcc gcc-c++ make au
 yum install yum-utils -y
  
 #Instalamos Nginx, MariaDB y SSH
-yum install -y httpd nginx mariadb-server openssh-server mod_fcgid
+yum install -y httpd nginx mariadb-server openssh-server mod_fcgid mod_ssl
 
 yum install -y postgresql-server postgresql postgresql-contrib
  
@@ -134,6 +134,10 @@ sed -i 's/PrivateTmp=true/PrivateTmp=false/g' /usr/lib/systemd/system/php70-php-
 sed -i 's/PrivateTmp=true/PrivateTmp=false/g' /usr/lib/systemd/system/php71-php-fpm.service
 sed -i 's/PrivateTmp=true/PrivateTmp=false/g' /usr/lib/systemd/system/php72-php-fpm.service
 sed -i 's/PrivateTmp=true/PrivateTmp=false/g' /usr/lib/systemd/system/php73-php-fpm.service
+
+
+mkdir -p /etc/ssl/
+openssl req -x509 -nodes -days 3650 -newkey rsa:2048 -keyout /etc/ssl/apache-selfsigned.key -out /etc/ssl/apache-selfsigned.crt -subj "/C=UY/ST=Maldonado/L=Maldonado/O=Testing/OU=Testing/CN=example.lan"
 
 echo -en "\033[1;31m" >> /etc/issue
 echo "Default" >> /etc/issue

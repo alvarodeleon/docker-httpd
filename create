@@ -1,10 +1,17 @@
 #!/bin/bash
 
-mkdir -p $2/{html,mysql,backup,disk,nginx,apache}
+if [ -d "$2" ]; then
+	if [ ! -d "$2/html" ]; then
+		mkdir -p $2/{html,mysql,backup,disk,nginx,apache}
+	fi
+else
+	mkdir -p $2/{html,mysql,backup,disk,nginx,apache}
+fi
+
 
 docker run -it --privileged --hostname="server" -e "container=docker" --cap-add SYS_ADMIN \
 --tmpfs /run -v /sys/fs/cgroup:/sys/fs/cgroup:ro \
--p 22:22 -p 80:80 -p 3306:3306 \
+-p 22:22 -p 80:80 -p 443:443 -p 5432:5432 -p 3306:3306 \
 -v "$2/html:/var/www/html" \
 -v "$2/nginx:/etc/nginx/conf.d" \
 -v "$2/apache:/etc/httpd/sites.d/" \

@@ -1,6 +1,6 @@
 
 FROM centos:7
-MAINTAINER The CentOS Project <deleon@adl.com.uy>
+MAINTAINER Alvaro DeLeon <deleon@adl.com.uy>
 LABEL Vendor="alvarodeleon.net"
 
 ADD files/setup.sh /setup.sh

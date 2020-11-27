@@ -1,9 +1,5 @@
 #!/bin/bash
-# File              : setup.sh
-# Author            : Alvaro <alvaro@server.com.uy>
-# Date              : 26.11.2020
-# Last Modified Date: 26.11.2020
-# Last Modified By  : Alvaro <alvaro@server.com.uy>
+
 yum -y --setopt=tsflags=nodocs update && \
     yum clean all
 
@@ -27,7 +23,7 @@ yum install -y httpd nginx mariadb-server openssh-server mod_fcgid mod_ssl
 
 yum install -y postgresql-server postgresql postgresql-contrib
  
-#Con esto instalaremos PHP 5.4, 5.5, 5.6, 7.0, 7.1, 7.2 y 7.3 
+#Con esto instalaremos PHP 5.4, 5.5, 5.6, 7.0, 7.1, 7.2, 7.3 y 8.0
 #ademas de todas las librerías necesarias mas PHP-FPM para
 #cada versión de PHP anterior
 yum install -y php54 php55 php56 php70 php71 php72 php73 php80 \

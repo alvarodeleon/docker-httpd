@@ -1,6 +1,6 @@
 #!/bin/bash
 
-yum install -y php80 
+yum install -y php80 \ 
 php80-php-fpm \
 php80-php-mysqlnd php80-php-common php80-php-mbstring php80-php-cli php80-php-fpm php80-php-gd php80-php-json php80-php-ioncube-loader php80-php-intl php80-php-pdo php80-php-pgsql php80-php-soap php80-php-xml php80-php-pecl-xmlrpc
 

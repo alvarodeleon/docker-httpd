@@ -1,4 +1,9 @@
 #!/bin/bash
+# File              : configure.sh
+# Author            : Alvaro <alvaro@server.com.uy>
+# Date              : 26.11.2020
+# Last Modified Date: 26.11.2020
+# Last Modified By  : Alvaro <alvaro@server.com.uy>
 
 
 /usr/sbin/mysql_repair
@@ -55,6 +60,8 @@ source /root/.bashrc
 /bin/systemctl enable php72-php-fpm
 /bin/systemctl enable php73-php-fpm
 /bin/systemctl enable php74-php-fpm
+/bin/systemctl enable php80-php-fpm
+
 
 #/bin/systemctl start nginx
 /bin/systemctl start httpd
@@ -70,5 +77,6 @@ source /root/.bashrc
 /bin/systemctl start php72-php-fpm
 /bin/systemctl start php73-php-fpm
 /bin/systemctl start php74-php-fpm
+/bin/systemctl start php80-php-fpm
 
 /bin/rm -rf /configure.sh

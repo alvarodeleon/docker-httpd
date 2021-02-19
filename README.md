@@ -12,7 +12,7 @@ git clone https://github.com/alvarodeleon/docker-httpd.git
 cd docker-httpd
 ```
 
-## Construyendo a imagen
+## Construyendo la imagen
 Para construir la imágenes solo necesitamos correr el comando bulid que generara la imagen base del contenedor, este proceso puede demorar un largo largo dato dependiendo de la velocidad de conexión y el rendimiento del pc donde corra
 ```
 sh ./build

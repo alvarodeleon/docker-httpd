@@ -111,7 +111,7 @@ Luego de creado y ajustado la versión de PHP que se necesites ejecutamos:
 service httpd restart
 ```
 
-Crear Un Virtualhost Sitio Con PHP En Nginx
+## Crear Un Virtualhost Sitio Con PHP En Nginx
 Para el caso de crear un virtualhost para Nginx, es similar, solo que esta vez el fichero va en el directorio nginx en por ejemplo /ruta/proyecto/nginx y dentro colocaremos un fichero .conf por ejemplo example.com.conf
 ```
 server {

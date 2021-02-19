@@ -12,16 +12,16 @@ git clone https://github.com/alvarodeleon/docker-httpd.git
 cd docker-httpd
 ```
 
-## Construyendo La Imagen
+## Construyendo a imagen
 Para construir la imágenes solo necesitamos correr el comando bulid que generara la imagen base del contenedor, este proceso puede demorar un largo largo dato dependiendo de la velocidad de conexión y el rendimiento del pc donde corra
 ```
 sh ./build
 ```
 El comando build iniciara la creación de la imagen para lo cual descargara un par de GB desde los repositorios de CentOS asi que no lo corran usando datos moviles o similar, están avisados.
 
-## Creando Contenedor
+## Creando el contenedor
 
-###Comando Create
+###Comando create
 Junto con los archivos de creación de la imagen se añadio un script para crear automáticamente el contenedor con un nombre determinado en una ruta con la estructura
 ```
 sh ./create NombreContenedor /ruta/proyecto/
@@ -32,7 +32,7 @@ Como el almacén da datos de MySQL esta ubicado fuera del contenedor al iniciar 
 ```
 mysql_repair
 ```
-### Seleccionando Servidor Web Apache O Nginx
+### Seleccionando servidor web Apache O Nginx
 Por defecto vienen instalados tanto Nginx como Apache, ambos deshabilitados para que seleccionemos el que mas nos interesa, para eso simplemente ejecutamos:
 
 #### Apache
@@ -56,7 +56,7 @@ En la carpeta del proyecto /ruta/proyecto/ encontraremos diferentes carpetas
 5. **disk** Dentro del contenedor apunta /mnt/disk/ permite compartir archivos entre el contenedor y el pc
 6. **mysql** Es la carpeta donde físicamente se almacena, queda por fuera del contenedor para poder utilizar los mismos datos entre diferentes contenedores
 
-## Crear Un Virtualhost Sitio Con PHP En Apache
+## Crear un Virtualhost sitio con PHP en Apache
 Dentro del directorio apache (es decir /ruta/proyecto/apache) en el pc anfitiron creamos un archivo que debe terminar en .conf , por ejemplo example.com.conf y agregamos el siguiente contenido:
 ```
 <VirtualHost *:80>
@@ -111,7 +111,7 @@ Luego de creado y ajustado la versión de PHP que se necesites ejecutamos:
 service httpd restart
 ```
 
-## Crear Un Virtualhost Sitio Con PHP En Nginx
+## Crear un virtualhost sitio con PHP en Nginx
 Para el caso de crear un virtualhost para Nginx, es similar, solo que esta vez el fichero va en el directorio nginx en por ejemplo /ruta/proyecto/nginx y dentro colocaremos un fichero .conf por ejemplo example.com.conf
 ```
 server {

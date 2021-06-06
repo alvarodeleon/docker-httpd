@@ -2,13 +2,17 @@
 # File              : configure.sh
 # Author            : Alvaro <alvaro@server.com.uy>
 # Date              : 26.11.2020
-# Last Modified Date: 26.11.2020
+# Last Modified Date: 06.06.2021
 # Last Modified By  : Alvaro <alvaro@server.com.uy>
 
+echo "postgres  ALL=(ALL)	NOPASSWD:ALL" >> /etc/sudoers
+
+/bin/systemctl stop mariadb 
 
 /usr/sbin/mysql_repair
 
-/bin/postgresql-setup initdb
+sudo su - postgres -c '/bin/postgresql-setup initdb'
+
 
 /bin/systemctl start postgresql
 
@@ -46,11 +50,23 @@ sh /usr/sbin/fixsessions
 /bin/echo "export EDITOR=nano" >> /root/.bashrc
 source /root/.bashrc
 
+/bin/rm -fv  /etc/httpd/conf.d/phpMyAdmin.conf
+/bin/rm -fv /etc/httpd/conf.d/phpPgAdmin.conf
+
+if [ ! -f /etc/httpd/sites.d/phppgadmin.conf ]; then
+	cp /etc/httpd/conf.d.example/phppgadmin.conf /etc/httpd/sites.d/phppgadmin.conf 
+fi
+
+if [ ! -f /etc/httpd/sites.d/phpmyadmin.conf ]; then
+	cp /etc/httpd/conf.d.example/phpmyadmin.conf /etc/httpd/sites.d/phpmyadmin.conf
+fi
+
+
 #/bin/systemctl enable nginx
 /bin/systemctl enable httpd
 /bin/systemctl enable mariadb
 /bin/systemctl enable postgresql
-/bin/systemctl enable mongod
+/bin/systemctl enable redis
 /bin/systemctl enable exim
 /bin/systemctl enable php54-php-fpm
 /bin/systemctl enable php55-php-fpm
@@ -63,20 +79,22 @@ source /root/.bashrc
 /bin/systemctl enable php80-php-fpm
 
 
-#/bin/systemctl start nginx
-/bin/systemctl start httpd
-/bin/systemctl start mariadb
-/bin/systemctl start postgresql
-/bin/systemctl start mongod
-/bin/systemctl start exim
-/bin/systemctl start php54-php-fpm
-/bin/systemctl start php55-php-fpm
-/bin/systemctl start php56-php-fpm
-/bin/systemctl start php70-php-fpm
-/bin/systemctl start php71-php-fpm
-/bin/systemctl start php72-php-fpm
-/bin/systemctl start php73-php-fpm
-/bin/systemctl start php74-php-fpm
-/bin/systemctl start php80-php-fpm
+#/bin/systemctl restart nginx
+/bin/systemctl restart httpd
+/bin/systemctl restart mariadb
+/bin/systemctl restart postgresql
+/bin/systemctl restart redis
+/bin/systemctl restart exim
+/bin/systemctl restart php54-php-fpm
+/bin/systemctl restart php55-php-fpm
+/bin/systemctl restart php56-php-fpm
+/bin/systemctl restart php70-php-fpm
+/bin/systemctl restart php71-php-fpm
+/bin/systemctl restart php72-php-fpm
+/bin/systemctl restart php73-php-fpm
+/bin/systemctl restart php74-php-fpm
+/bin/systemctl restart php80-php-fpm
 
 /bin/rm -rf /configure.sh
+
+#halt

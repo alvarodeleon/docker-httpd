@@ -11,7 +11,7 @@ fi
 
 docker run -it --privileged --hostname="server" -e "container=docker" --cap-add SYS_ADMIN \
 --tmpfs /run -v /sys/fs/cgroup:/sys/fs/cgroup:ro \
--p 22:22 -p 80:80 -p 443:443 -p 5432:5432 -p 3306:3306 \
+-p 22:22 -p 80:80 -p 443:443 -p 5432:5432 -p 3306:3306 -p 63435:63435 \
 -v "$2/html:/var/www/html" \
 -v "$2/nginx:/etc/nginx/conf.d" \
 -v "$2/apache:/etc/httpd/sites.d/" \

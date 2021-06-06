@@ -14,7 +14,11 @@ ADD files/nginx/node.lan.conf /etc/nginx/conf.d.example/node.lan.conf
 ADD files/nginx/proxy_params /etc/nginx/conf.d.example/proxy_params
 ADD files/nginx/phpmyadmin.conf /etc/nginx/conf.d.example/phpmyadmin.conf
 ADD files/nginx/phppgadmin.conf /etc/nginx/conf.d.example/phppgadmin.conf
+
 ADD files/apache/example.lan.conf /etc/httpd/conf.d.example/example.lan.conf
+ADD files/apache/phpmyadmin.conf /etc/httpd/conf.d.example/phpmyadmin.conf
+ADD files/apache/phppgadmin.conf /etc/httpd/conf.d.example/phppgadmin.conf
+
 
 ADD files/cmd/mysql_repair /usr/sbin/mysql_repair
 RUN chmod -v +x /usr/sbin/mysql_repair
@@ -28,4 +32,4 @@ RUN chmod -v +x /usr/sbin/fixsessions
 ADD files/configure.sh /configure.sh
 RUN chmod -v +x /configure.sh
 
-RUN echo "@reboot sh /configure.sh" > /var/spool/cron/root
+RUN echo "@reboot sh /configure.sh >> /var/log/configure.log  2>&1" > /var/spool/cron/root

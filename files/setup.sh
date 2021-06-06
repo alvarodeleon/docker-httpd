@@ -14,14 +14,14 @@ yum update -y
  
 #Opcional: En lo personal instalo todos estas herramientas y 
 #liberias porque siempre suelo utilizarlas
-yum install -y wget nano lynx git iputils net-tools nmap mtr gcc gcc-c++ make autoconf glibc rcs pcre-devel openssl-devel expat-devel geoip-devel zlib-devel mlocate ncdu mytop composer npm bind-utils
+yum install -y sudo vim wget nano lynx git iputils net-tools nmap mtr gcc gcc-c++ make autoconf glibc rcs pcre-devel openssl-devel expat-devel geoip-devel zlib-devel mlocate ncdu mytop composer npm bind-utils
  
 yum install yum-utils -y
  
 #Instalamos Nginx, MariaDB y SSH
 yum install -y httpd nginx mariadb-server openssh-server mod_fcgid mod_ssl
 
-yum install -y postgresql-server postgresql postgresql-contrib
+yum install -y postgresql-server postgresql postgresql-contrib phpPgAdmin
  
 #Con esto instalaremos PHP 5.4, 5.5, 5.6, 7.0, 7.1, 7.2, 7.3 y 8.0
 #ademas de todas las librerías necesarias mas PHP-FPM para
@@ -45,7 +45,9 @@ yum install -y libssh2-devel php54-php-pecl-ssh2 php55-php-pecl-ssh2 php56-php-p
 
 yum -y install python2-pip python34 python34-pip python36 python36-pip
 yum -y install phpmyadmin
+yum -y install redis
 
+yum -y install exim
 
 #
 echo "extension=ssh2.so" >> /opt/remi/php54/root/etc/php.ini
@@ -170,6 +172,11 @@ echo "" >> /etc/issue
 echo "phpMyAdmin: " >> /etc/issue
 echo "User: dbroot" >> /etc/issue
 echo "Password: dbroot" >> /etc/issue
+echo "PostgreSQL/phpPgAdmin: " >> /etc/issue
+echo "User: postgres" >> /etc/issue
+echo "Password: docker" >> /etc/issue
+echo "" >> /etc/issue
+
 echo "" >> /etc/issue
 
 echo "If MySQL fail on boot and /var/lib/mysql is empty, please execute mysql_repair" >> /etc/issue

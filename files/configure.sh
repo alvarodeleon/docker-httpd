@@ -77,7 +77,7 @@ fi
 /bin/systemctl enable php73-php-fpm
 /bin/systemctl enable php74-php-fpm
 /bin/systemctl enable php80-php-fpm
-
+/bin/systemctl enable php81-php-fpm
 
 #/bin/systemctl restart nginx
 /bin/systemctl restart httpd
@@ -94,6 +94,7 @@ fi
 /bin/systemctl restart php73-php-fpm
 /bin/systemctl restart php74-php-fpm
 /bin/systemctl restart php80-php-fpm
+/bin/systemctl restart php81-php-fpm
 
 /bin/rm -rf /configure.sh
 

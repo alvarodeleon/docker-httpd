@@ -154,6 +154,7 @@ chown www-data:www-data /var/opt/remi/php70/lib/php/session
 chown www-data:www-data /var/opt/remi/php71/lib/php/session
 chown www-data:www-data /var/opt/remi/php72/lib/php/session
 chown www-data:www-data /var/opt/remi/php73/lib/php/session
+chown www-data:www-data /var/opt/remi/php74/lib/php/session
 chown www-data:www-data /var/opt/remi/php80/lib/php/session
 chown www-data:www-data /var/opt/remi/php81/lib/php/session
 
@@ -164,6 +165,7 @@ sed -i 's/PrivateTmp=true/PrivateTmp=false/g' /usr/lib/systemd/system/php70-php-
 sed -i 's/PrivateTmp=true/PrivateTmp=false/g' /usr/lib/systemd/system/php71-php-fpm.service
 sed -i 's/PrivateTmp=true/PrivateTmp=false/g' /usr/lib/systemd/system/php72-php-fpm.service
 sed -i 's/PrivateTmp=true/PrivateTmp=false/g' /usr/lib/systemd/system/php73-php-fpm.service
+sed -i 's/PrivateTmp=true/PrivateTmp=false/g' /usr/lib/systemd/system/php74-php-fpm.service
 sed -i 's/PrivateTmp=true/PrivateTmp=false/g' /usr/lib/systemd/system/php80-php-fpm.service
 sed -i 's/PrivateTmp=true/PrivateTmp=false/g' /usr/lib/systemd/system/php81-php-fpm.service
 

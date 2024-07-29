@@ -83,7 +83,9 @@ sed -i 's/:9000/:9080/g' /etc/opt/remi/php80/php-fpm.d/www.conf
 sed -i 's/:9000/:9081/g' /etc/opt/remi/php81/php-fpm.d/www.conf
 sed -i 's/:9000/:9082/g' /etc/opt/remi/php82/php-fpm.d/www.conf
 sed -i 's/:9000/:9083/g' /etc/opt/remi/php83/php-fpm.d/www.conf
- 
+
+adduser www-data
+
 #Cambiando usuario de PHP-FPM
 sed -i 's/user = apache/user = www-data/g' /opt/remi/php54/root/etc/php-fpm.d/www.conf
 sed -i 's/group = apache/group = www-data/g' /opt/remi/php54/root/etc/php-fpm.d/www.conf
